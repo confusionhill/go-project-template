@@ -1,5 +1,5 @@
 # Go Backend REST Server Template
-
+Self made go REST API server template
 ## Requirements
 ### What you need
 1. Golang 1.19
