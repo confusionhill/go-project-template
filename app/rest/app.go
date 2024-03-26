@@ -4,6 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"go-be-template/app"
 	"go-be-template/internal/handler/hello"
+	"go-be-template/internal/middleware/authentication"
 	"go-be-template/internal/model/config"
 )
 
@@ -24,7 +25,7 @@ func applicationDelegate(cfg *config.Config) (*echo.Echo, error) {
 	e := echo.New()
 	// hello example
 	helloGroup := e.Group("/hello")
+	helloGroup.Use(authentication.AuthorizationMiddleware([]byte("secret")))
 	helloGroup.GET("", helloHandler.GetHelloMessageHandler)
-
 	return e, nil
 }
