@@ -29,6 +29,6 @@ func applicationDelegate(cfg *config.Config) (*echo.Echo, error) {
 	helloGroup.GET(
 		"/protected",
 		helloHandler.GetHelloMessageHandler,
-		authentication.AuthorizationMiddleware(cfg.Jwt.Secret))
+		authentication.AuthorizationMiddleware(cfg.Jwt.AccessSecret))
 	return e, nil
 }

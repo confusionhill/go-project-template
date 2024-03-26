@@ -1,5 +1,7 @@
 package config
 
+import "time"
+
 type Config struct {
 	App AppConfig      `json:"app"`
 	Sql DatabaseConfig `json:"sql"`
@@ -25,6 +27,7 @@ type PaymentConfig struct {
 }
 
 type JWTConfig struct {
-	Secret string `json:"secret"`
-	Span   int64  `json:"span"`
+	AccessSecret  string        `json:"access_secret"`
+	RefreshSecret string        `json:"refresh_secret"`
+	Span          time.Duration `json:"span"`
 }
