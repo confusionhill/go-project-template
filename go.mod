@@ -1,4 +1,4 @@
-module go-project-template-be
+module go-be-template
 
 go 1.19
 

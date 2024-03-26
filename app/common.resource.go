@@ -1,6 +1,6 @@
 package app
 
-import "sinarmas/internal/model/config"
+import "go-be-template/internal/model/config"
 
 type CommonResource struct {
 }

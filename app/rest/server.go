@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
-	"sinarmas/internal/model/config"
+	"go-be-template/internal/model/config"
 )
 
 func runServer(cfg *config.Config, e *echo.Echo) {

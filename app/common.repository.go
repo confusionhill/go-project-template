@@ -1,8 +1,8 @@
 package app
 
 import (
-	"sinarmas/internal/model/config"
-	"sinarmas/internal/repository/hello"
+	"go-be-template/internal/model/config"
+	"go-be-template/internal/repository/hello"
 )
 
 type CommonRepository struct {

@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
-	"sinarmas/app"
-	"sinarmas/internal/handler/hello"
-	"sinarmas/internal/model/config"
+	"go-be-template/app"
+	"go-be-template/internal/handler/hello"
+	"go-be-template/internal/model/config"
 )
 
 func applicationDelegate(cfg *config.Config) (*echo.Echo, error) {

@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/labstack/gommon/log"
-	"sinarmas/internal/model/config"
+	"go-be-template/internal/model/config"
 )
 
 func main() {

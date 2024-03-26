@@ -1,8 +1,8 @@
 package hello
 
 import (
-	"sinarmas/internal/model/config"
-	"sinarmas/internal/repository/hello"
+	"go-be-template/internal/model/config"
+	"go-be-template/internal/repository/hello"
 )
 
 type Usecase struct {

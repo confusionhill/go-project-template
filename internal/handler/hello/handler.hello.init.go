@@ -1,8 +1,8 @@
 package hello
 
 import (
-	"sinarmas/internal/model/config"
-	"sinarmas/internal/usecase/hello"
+	"go-be-template/internal/model/config"
+	"go-be-template/internal/usecase/hello"
 )
 
 type Handler struct {

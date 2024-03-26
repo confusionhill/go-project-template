@@ -1,6 +1,6 @@
 package hello
 
-import "sinarmas/internal/model/config"
+import "go-be-template/internal/model/config"
 
 type Repository struct {
 	cfg *config.Config
