@@ -25,7 +25,10 @@ func applicationDelegate(cfg *config.Config) (*echo.Echo, error) {
 	e := echo.New()
 	// hello example
 	helloGroup := e.Group("/hello")
-	helloGroup.Use(authentication.AuthorizationMiddleware([]byte("secret")))
 	helloGroup.GET("", helloHandler.GetHelloMessageHandler)
+	helloGroup.GET(
+		"/protected",
+		helloHandler.GetHelloMessageHandler,
+		authentication.AuthorizationMiddleware(cfg.Jwt.Secret))
 	return e, nil
 }

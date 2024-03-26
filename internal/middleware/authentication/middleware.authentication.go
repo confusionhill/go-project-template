@@ -12,9 +12,10 @@ type JwtClaims struct {
 	jwt.Claims
 }
 
-func AuthorizationMiddleware(secret []byte) echo.MiddlewareFunc {
+func AuthorizationMiddleware(jwtSecret string) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
+			secret := []byte(jwtSecret)
 			tokenString := c.Request().Header.Get("Authorization")
 			if tokenString == "" {
 				return c.JSON(http.StatusUnauthorized, wrapper.BaseResponseDTO{

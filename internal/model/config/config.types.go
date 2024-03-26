@@ -3,6 +3,7 @@ package config
 type Config struct {
 	App AppConfig      `json:"app"`
 	Sql DatabaseConfig `json:"sql"`
+	Jwt JWTConfig      `json:"jwt"`
 }
 
 type AppConfig struct {
@@ -21,4 +22,9 @@ type DatabaseConfig struct {
 type PaymentConfig struct {
 	ApiKey string `json:"api_key"`
 	Host   string `json:"host"`
+}
+
+type JWTConfig struct {
+	Secret string `json:"secret"`
+	Span   int64  `json:"span"`
 }
