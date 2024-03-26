@@ -16,8 +16,7 @@ func NewCommonResource(cfg *config.Config) (*CommonResource, error) {
 	if err != nil {
 		return nil, err
 	}
-	err = db.Ping()
-	if err != nil {
+	if err = db.Ping(); err != nil {
 		return nil, err
 	}
 	return &CommonResource{
