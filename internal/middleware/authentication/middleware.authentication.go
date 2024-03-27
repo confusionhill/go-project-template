@@ -4,7 +4,6 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"
 	"go-be-template/internal/model/dto/wrapper"
-	"go-be-template/internal/utils/auth"
 	"net/http"
 	"strings"
 )
@@ -27,17 +26,17 @@ func AuthorizationMiddleware(jwtSecret string) echo.MiddlewareFunc {
 					Message: "bad authorization header",
 				})
 			}
-			token, err := jwt.ParseWithClaims(splitted[1], &auth.JwtClaims{}, func(token *jwt.Token) (interface{}, error) {
+			token, err := jwt.ParseWithClaims(splitted[1], &jwt.RegisteredClaims{}, func(token *jwt.Token) (interface{}, error) {
 				return secret, nil
 			})
 			if err != nil {
 				return c.JSON(http.StatusUnauthorized, wrapper.BaseResponseDTO{
 					Code:    http.StatusUnauthorized,
-					Message: "invalid token",
+					Message: err.Error(),
 				})
 			}
 
-			if claims, ok := token.Claims.(*auth.JwtClaims); ok && token.Valid {
+			if claims, ok := token.Claims.(*jwt.RegisteredClaims); ok && token.Valid {
 				c.Set("claims", claims)
 				return next(c)
 			}

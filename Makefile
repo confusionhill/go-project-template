@@ -1,2 +1,2 @@
-server-run-local :
+server-run:
 	go run app/rest/*.go

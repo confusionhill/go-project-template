@@ -11,7 +11,12 @@ func (h *Handler) GetHelloMessageHandler(e echo.Context) error {
 	if err != nil {
 		return e.JSON(err.StatusCode, err.Error.Error())
 	}
+	accessToken, err := h.helloUsecase.CreateBearerTokenUsecase()
+	if err != nil {
+		return e.JSON(err.StatusCode, err.Error.Error())
+	}
 	return e.JSON(http.StatusOK, hello.HelloResponseDTO{
-		Message: msg.Message,
+		Message:      msg.Message,
+		AcccessToken: accessToken,
 	})
 }
