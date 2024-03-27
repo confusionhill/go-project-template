@@ -3,6 +3,7 @@ package auth
 import (
 	"errors"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/labstack/echo/v4"
 	"go-be-template/internal/model/config"
 	"go-be-template/internal/model/entity/wrapper"
 	"net/http"
@@ -67,4 +68,15 @@ func ParseRefreshToken(cfg config.JWTConfig, refreshToken string) (*jwt.Register
 		StatusCode: http.StatusInternalServerError,
 		Error:      errors.New("cannot decode token"),
 	}
+}
+
+func GetClaims(e echo.Context) (*jwt.RegisteredClaims, *wrapper.ErrorWrapper) {
+	claims, ok := e.Get("claims").(*jwt.RegisteredClaims)
+	if !ok {
+		return nil, &wrapper.ErrorWrapper{
+			StatusCode: http.StatusInternalServerError,
+			Error:      errors.New("cannot decode or find authorization claims"),
+		}
+	}
+	return claims, nil
 }
